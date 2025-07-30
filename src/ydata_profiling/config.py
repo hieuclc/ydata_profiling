@@ -289,6 +289,10 @@ class Report(BaseModel):
     # Numeric precision for displaying statistics
     precision: int = 8
 
+class JsonCustom(BaseModel):
+    # hieu tu custom
+    remove_keys: Dict[str, Union[List[str], None]] = {}
+
 
 class Settings(BaseSettings):
     # Default prefix to avoid collisions with environment variables
@@ -354,6 +358,9 @@ class Settings(BaseSettings):
     report: Report = Report()
     html: Html = Html()
     notebook: Notebook = Notebook()
+
+    # hieu tu custom
+    json_custom: Optional[JsonCustom] = JsonCustom()
 
     def update(self, updates: dict) -> "Settings":
         update = _merge_dictionaries(self.dict(), updates)

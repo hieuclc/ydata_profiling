@@ -483,6 +483,20 @@ class ProfileReport(SerializeReport, ExpectationsReport):
             description_dict = encode_it(description_dict)
             description_dict = redact_summary(description_dict, self.config)
 
+            # hieu custom (experimental)
+            custom_keys_config = self.config.json_custom.remove_keys
+
+            for section, keys in custom_keys_config.items():
+                if section in description_dict:
+                    if keys is None:
+                        description_dict.pop(section, None)
+                    else:
+                        section_data = description_dict[section]
+                        if isinstance(section_data, dict):
+                            for name, item in section_data.items():
+                                for key in keys:
+                                    item.pop(key, None)
+
             data = json.dumps(description_dict, indent=4)
             pbar.update()
         return data
