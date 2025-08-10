@@ -171,6 +171,17 @@ json_custom:
       - value_counts_without_nan
       - value_counts_index_sorted
       - histogram
+      - first_rows
+      - character_counts
+      - category_alias_values
+      - block_alias_values
+      - block_alias_counts
+      - block_alias_char_counts
+      - script_counts
+      - script_char_counts
+      - category_alias_counts
+      - n_category
+      - category_alias_char_counts
     analysis: null
     scatter: null
     correlations: null

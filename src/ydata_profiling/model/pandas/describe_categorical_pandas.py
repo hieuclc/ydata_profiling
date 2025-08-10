@@ -184,7 +184,7 @@ def word_summary_vc(vc: pd.Series, stop_words: List[str] = [], max_words: int = 
         stop_words = [x.lower() for x in stop_words]
         word_counts = word_counts.loc[~word_counts.index.isin(stop_words)]
     
-    word_counts = word_counts.head(max_words)
+    # word_counts = word_counts.head(max_words)
 
     return {"word_counts": word_counts} if not word_counts.empty else {}
 
