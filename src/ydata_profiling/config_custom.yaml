@@ -172,6 +172,9 @@ json_custom:
       - value_counts_index_sorted
       - histogram
       - first_rows
+      - length_histogram
+      - histogram_length
+      - bin_edges
       - character_counts
       - category_alias_values
       - block_alias_values
@@ -189,6 +192,7 @@ json_custom:
     package: null
     sample: null
     duplicates: null
+  word_frequency_counts: 15
 
 # The number of observations to show
 n_obs_unique: 5

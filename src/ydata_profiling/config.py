@@ -292,6 +292,7 @@ class Report(BaseModel):
 class JsonCustom(BaseModel):
     # hieu tu custom
     remove_keys: Dict[str, Union[List[str], None]] = {}
+    word_frequency_counts: int = None
 
 
 class Settings(BaseSettings):

@@ -152,7 +152,7 @@ def unicode_summary_vc(vc: pd.Series) -> dict:
     return summary
 
 
-def word_summary_vc(vc: pd.Series, stop_words: List[str] = [], max_words: int = 10) -> dict:
+def word_summary_vc(vc: pd.Series, stop_words: List[str] = []) -> dict:
     """Count the number of occurrences of each individual word across
     all lines of the data Series, then sort from the word with the most
     occurrences to the word with the least occurrences. If a list of
@@ -183,8 +183,6 @@ def word_summary_vc(vc: pd.Series, stop_words: List[str] = [], max_words: int = 
     if len(stop_words) > 0:
         stop_words = [x.lower() for x in stop_words]
         word_counts = word_counts.loc[~word_counts.index.isin(stop_words)]
-    
-    # word_counts = word_counts.head(max_words)
 
     return {"word_counts": word_counts} if not word_counts.empty else {}
 

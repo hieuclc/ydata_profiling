@@ -497,6 +497,15 @@ class ProfileReport(SerializeReport, ExpectationsReport):
                                 for key in keys:
                                     item.pop(key, None)
 
+            word_frequency_counts = self.config.json_custom.word_frequency_counts
+
+            if word_frequency_counts:
+                section_data = description_dict['variables']
+                for name, item in section_data.items():
+                    if 'word_counts' in item:
+                        item[f'top_{word_frequency_counts}_word_frequency_counts'] = dict(list(item['word_counts'].items())[:word_frequency_counts])
+                        item.pop('word_counts', None)
+
             data = json.dumps(description_dict, indent=4)
             pbar.update()
         return data
